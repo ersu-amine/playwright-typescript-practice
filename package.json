@@ -9,13 +9,14 @@
     "test-tag": "npx playwright test --grep @tagName",
     "test-smoke": "npx playwright test --grep @smoke",
     "report": "npx playwright show-report"
-},
+  },
   "keywords": [],
   "author": "Amine",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",
+    "@faker-js/faker": "^9.9.0",
     "@playwright/test": "^1.56.0",
     "@types/cucumber": "^6.0.1",
     "@types/node": "^24.7.2",

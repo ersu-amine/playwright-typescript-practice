@@ -10,11 +10,16 @@ module.exports = {
 
         requireModule: ['ts-node/register'],
 
+        formatOptions: {
+            snippetInterface: "async-await"
+        },
+
         paths: ['tests/features/**/*.feature'],
 
         publishQuiet: true,
 
-        format: ['progress', 'html:cucumber-report.html']
+        format: ['progress', 'html:cucumber-report.html'],
+        "dryRun": false
 
     }
 
