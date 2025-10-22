@@ -1,4 +1,4 @@
-import settings from "../config/settings.json"; // adjust path if needed
+import settings from "../config/settings.json"; 
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
