@@ -1,4 +1,4 @@
-import { Page, Locator, expect} from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
 import settings from "../tests/config/settings.json";
 
 export class LoginPage {
@@ -31,7 +31,7 @@ export class LoginPage {
     this.loginButton.waitFor({ state: "visible" });
     await this.loginButton.click();
     await this.page.waitForTimeout(3000); // wait for login to process
-      console.log("Current URL after login:", this.page.url());
+    console.log("Current URL after login:", this.page.url());
   }
 
   async verifyDashboard() {

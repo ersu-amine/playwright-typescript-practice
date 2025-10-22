@@ -13,6 +13,7 @@ Before(async function (this: CustomWorld) {
   // Attach to World so step defs can access via this.browser / this.page
   this.browser = browser;
   this.page = page;
+  await this.initPageObjects();
 });
 
 After(async function (this: CustomWorld) {
