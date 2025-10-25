@@ -1,4 +1,4 @@
-@wip
+@registration
 Feature: User registration
   In order to access the application
   As a new user
