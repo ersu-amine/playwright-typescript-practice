@@ -2,16 +2,23 @@ import { setWorldConstructor, World } from "@cucumber/cucumber";
 import { Browser, Page } from "playwright";
 import { LoginPage } from "../../pages/LoginPage";
 import {RegistrationPage} from "../../pages/RegistrationPage";
+import { BasePage } from "../../pages/BasePage";
+import { ProductPage } from "../../pages/ProductPage";
 
 export class CustomWorld extends World {
   browser!: Browser;
   page!: Page;
   loginPage!: LoginPage;
   registrationPage!:RegistrationPage;
+  basePage!: BasePage;
+  productPage!: ProductPage;
+  // Add other page objects as needed
 
   async initPageObjects() {
     this.loginPage = new LoginPage(this.page);
     this.registrationPage = new RegistrationPage(this.page);
+    this.basePage = new BasePage(this.page);
+    this.productPage = new ProductPage(this.page);
     // Initialize other page objects similarly
   }
 }

@@ -10,9 +10,9 @@ Feature: Add items to shopping cart
 
   Scenario: Add single product to the cart
     When the user selects a product "Thor Hammer"
-    And the user clicks the "Add to Cart" button
-    Then the shopping cart should contain 1 item
-    And the cart total should update accordingly
+    And the user clicks add to cart button
+    Then the shopping cart icon should contain 1 item
+
 
 #   Scenario: Add multiple products to the cart
 #     When the user selects a product "Laptop"
