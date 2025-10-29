@@ -1,4 +1,3 @@
-import settings from "../config/settings.json";
 import { Given, When, Then } from "@cucumber/cucumber";
 import dotenv from "dotenv";
 import path from "path";
@@ -10,7 +9,10 @@ Given("user navigates to the login page", async function () {
 });
 
 When("user enters valid username and password", async function () {
-  await this.loginPage.enterCredentials(process.env.EMAIL, process.env.PASSWORD);
+  await this.loginPage.enterCredentials(
+    process.env.EMAIL,
+    process.env.PASSWORD
+  );
 });
 
 When("user click the login button", async function () {
