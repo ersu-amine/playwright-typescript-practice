@@ -1,5 +1,7 @@
 import { Page, Locator, expect } from "@playwright/test";
 import settings from "../tests/config/settings.json";
+import dotenv from "dotenv";  //importing dotenv to manage environment variables
+dotenv.config(); //loading environment variables
 
 export class LoginPage {
   readonly page: Page;
@@ -7,6 +9,7 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly dashboardHeader: Locator;
+  readonly loginUrl: string;
 
   constructor(page: Page) {
     this.page = page;
@@ -14,9 +17,10 @@ export class LoginPage {
     this.passwordInput = page.locator("#password");
     this.loginButton = page.locator('[data-test="login-submit"]');
     this.dashboardHeader = page.locator("h1");
+    this.loginUrl = `${process.env.BASE_URL}/auth/login`;
   }
   async navigateToLogin() {
-    await this.page.goto(settings.LOGIN_URL);
+    await this.page.goto(this.loginUrl);
   }
 
   async enterCredentials(email: string, password: string) {
