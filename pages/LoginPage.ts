@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from "@playwright/test";
-import settings from "../tests/config/settings.json";
 import dotenv from "dotenv";  //importing dotenv to manage environment variables
 dotenv.config(); //loading environment variables
 
