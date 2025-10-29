@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from "@playwright/test";
-import settings from "../tests/config/settings.json";
 
 export class BasePage{
     readonly page:Page;
@@ -22,7 +21,7 @@ export class BasePage{
     }
 
     async navigateToHome(){
-        await this.page.goto(settings.HOME_URL);
+        await this.page.goto(process.env.BASE_URL!);
     }
     
     async navigateToLogin(){

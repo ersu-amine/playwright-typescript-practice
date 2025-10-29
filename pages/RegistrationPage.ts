@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from "@playwright/test";
-import settings from "../tests/config/settings.json";
 import { faker } from "@faker-js/faker/locale/en";
 
 export class RegistrationPage {
@@ -17,6 +16,7 @@ export class RegistrationPage {
   readonly countryDropdown: Locator;
   readonly registerButton: Locator;
   readonly loginHeader: Locator;
+  readonly registrationUrl: string;
 
   constructor(page: Page) {
     this.page = page;
@@ -33,34 +33,35 @@ export class RegistrationPage {
     this.countryDropdown = page.locator("select#country");
     this.registerButton = page.locator("//button[@type='submit']");
     this.loginHeader = page.locator("//h3[text()='Login']");
+    this.registrationUrl = `${process.env.BASE_URL}/auth/register`;
   }
 
-    async navigateToRegistration() {
-        await this.page.goto(settings.REGISTRATION_URL);
-    }
+  async navigateToRegistration() {
+    await this.page.goto(this.registrationUrl);
+  }
 
-    async fillRegistrationForm() {
-        await this.firstNameInput.fill(faker.person.firstName());
-        await this.lastNameInput.fill(faker.person.lastName());
-        await this.dobInput.fill("1990-01-01");
-        await this.streetInput.fill(faker.location.streetAddress());
-        await this.postalCodeInput.fill(faker.location.zipCode());
-        await this.cityInput.fill(faker.location.city());
-        await this.stateInput.fill(faker.location.state());
-        await this.countryDropdown.selectOption({ label: "Canada" });
-        const phoneNumber = faker.string.numeric(10);
-        await this.phoneInput.fill(phoneNumber);
-        await this.emailInput.fill(faker.internet.email());
-        await this.passwordInput.fill(settings.PASSWORD);
-    }
+  async fillRegistrationForm() {
+    await this.firstNameInput.fill(faker.person.firstName());
+    await this.lastNameInput.fill(faker.person.lastName());
+    await this.dobInput.fill("1990-01-01");
+    await this.streetInput.fill(faker.location.streetAddress());
+    await this.postalCodeInput.fill(faker.location.zipCode());
+    await this.cityInput.fill(faker.location.city());
+    await this.stateInput.fill(faker.location.state());
+    await this.countryDropdown.selectOption({ label: "Canada" });
+    const phoneNumber = faker.string.numeric(10);
+    await this.phoneInput.fill(phoneNumber);
+    await this.emailInput.fill(faker.internet.email());
+    await this.passwordInput.fill(process.env.PASSWORD!);
+  }
 
-    async clickRegisterButton() {
-        await this.registerButton.click();
-    }
+  async clickRegisterButton() {
+    await this.registerButton.click();
+  }
 
-    async verifyRedirectionToLogin() {
-        await this.loginHeader.waitFor({ state: "visible", timeout: 2000 });
-        expect(this.page.url()).toBe(settings.LOGIN_URL);
-        expect(await this.loginHeader.textContent()).toBe("Login");
-    }
+  async verifyRedirectionToLogin() {
+    await this.loginHeader.waitFor({ state: "visible", timeout: 2000 });
+    expect(this.page.url()).toBe(`${process.env.BASE_URL}/auth/login`);
+    expect(await this.loginHeader.textContent()).toBe("Login");
+  }
 }
