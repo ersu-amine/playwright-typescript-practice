@@ -9,3 +9,6 @@ notes.txt
 .env
 cucumber-report.html
 tests/config/settings.json
+.env
+.env.*
+!.env.example
