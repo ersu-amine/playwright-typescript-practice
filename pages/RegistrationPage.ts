@@ -44,15 +44,18 @@ export class RegistrationPage {
     await this.firstNameInput.fill(faker.person.firstName());
     await this.lastNameInput.fill(faker.person.lastName());
     await this.dobInput.fill("1990-01-01");
+    console.log("Filling registration form with random data");
     await this.streetInput.fill(faker.location.streetAddress());
     await this.postalCodeInput.fill(faker.location.zipCode());
     await this.cityInput.fill(faker.location.city());
     await this.stateInput.fill(faker.location.state());
     await this.countryDropdown.selectOption({ label: "Canada" });
+    console.log("Selected country: Canada");
     const phoneNumber = faker.string.numeric(10);
     await this.phoneInput.fill(phoneNumber);
     await this.emailInput.fill(faker.internet.email());
     await this.passwordInput.fill(process.env.PASSWORD!);
+    console.log("Filled all registration form fields and ready to submit");
   }
 
   async clickRegisterButton() {
