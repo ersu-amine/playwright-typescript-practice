@@ -6,8 +6,10 @@ import { CustomWorld } from "../support/world";
 setDefaultTimeout(10 * 1000);
 
 Before(async function (this: CustomWorld) {
+  const isCI = process.env.CI === "true";
+
   // Launch a browser and new page for each scenario
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: isCI ? true : false }); // Launch browser in headless mode in CI, headed mode locally
   const page = await browser.newPage();
 
   // Attach to World so step defs can access via this.browser / this.page
