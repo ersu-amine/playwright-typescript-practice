@@ -1,4 +1,4 @@
-@wip
+@addToCart
 Feature: Add items to shopping cart
 
   As a user
