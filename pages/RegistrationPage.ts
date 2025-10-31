@@ -1,5 +1,7 @@
 import { Page, Locator, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker/locale/en";
+import dotenv from "dotenv"; //importing dotenv to manage environment variables
+dotenv.config(); //loading environment variables
 
 export class RegistrationPage {
   readonly page: Page;
@@ -39,6 +41,7 @@ export class RegistrationPage {
   }
 
   async navigateToRegistration() {
+    console.log("Navigating to registration page:", this.registrationUrl);
     await this.page.goto(this.registrationUrl, { waitUntil: "networkidle" });
     await this.header.waitFor({ state: "visible", timeout: 2000 });
   }
