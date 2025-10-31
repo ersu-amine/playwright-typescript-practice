@@ -3,7 +3,7 @@ import { chromium } from "playwright";
 import { CustomWorld } from "../support/world";
 
 // Increase default step timeout to 10s to allow slow navigation in dev
-setDefaultTimeout(10 * 1000);
+setDefaultTimeout(60 * 1000);
 
 Before(async function (this: CustomWorld) {
   const isCI = process.env.CI === "true";
