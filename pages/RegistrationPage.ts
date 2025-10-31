@@ -42,8 +42,10 @@ export class RegistrationPage {
 
   async navigateToRegistration() {
     console.log("Navigating to registration page:", this.registrationUrl);
-    await this.page.goto(this.registrationUrl, { waitUntil: "networkidle" });
-    await this.header.waitFor({ state: "visible", timeout: 2000 });
+    await this.page.goto(this.registrationUrl);
+    console.log(this.page.url());
+    console.log("Waiting for registration page header to be visible");
+    await this.header.waitFor({ state: "visible", timeout: 10000 });
   }
 
   async fillRegistrationForm() {
