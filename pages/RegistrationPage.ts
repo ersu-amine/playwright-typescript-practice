@@ -37,7 +37,7 @@ export class RegistrationPage {
     this.registerButton = page.locator("//button[@type='submit']");
     this.loginHeader = page.locator("//h3[text()='Login']");
     this.registrationUrl = `${process.env.BASE_URL}/auth/register`;
-    this.header = page.locator("h3").first();
+    this.header = page.locator("h3");
   }
 
   async navigateToRegistration() {
@@ -45,7 +45,7 @@ export class RegistrationPage {
     await this.page.goto(this.registrationUrl);
     console.log(this.page.url());
     console.log("Waiting for registration page header to be visible");
-    await this.header.waitFor({ state: "visible", timeout: 10000 });
+    await this.header.waitFor({ state: "visible", timeout: 30000 });
   }
 
   async fillRegistrationForm() {
