@@ -12,3 +12,5 @@ tests/config/settings.json
 .env
 .env.*
 !.env.example
+import.ts
+practice.ts

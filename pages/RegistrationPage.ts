@@ -17,6 +17,7 @@ export class RegistrationPage {
   readonly registerButton: Locator;
   readonly loginHeader: Locator;
   readonly registrationUrl: string;
+  readonly header: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -34,17 +35,19 @@ export class RegistrationPage {
     this.registerButton = page.locator("//button[@type='submit']");
     this.loginHeader = page.locator("//h3[text()='Login']");
     this.registrationUrl = `${process.env.BASE_URL}/auth/register`;
+    this.header = page.locator("h3").first();
   }
 
   async navigateToRegistration() {
-    await this.page.goto(this.registrationUrl);
+    await this.page.goto(this.registrationUrl, { waitUntil: "networkidle" });
+    await this.header.waitFor({ state: "visible", timeout: 2000 });
   }
 
   async fillRegistrationForm() {
+    console.log("Filling registration form with random data");
     await this.firstNameInput.fill(faker.person.firstName());
     await this.lastNameInput.fill(faker.person.lastName());
     await this.dobInput.fill("1990-01-01");
-    console.log("Filling registration form with random data");
     await this.streetInput.fill(faker.location.streetAddress());
     await this.postalCodeInput.fill(faker.location.zipCode());
     await this.cityInput.fill(faker.location.city());
