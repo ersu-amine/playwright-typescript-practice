@@ -46,3 +46,7 @@ jobs:
             tests/artifacts/screenshots
             tests/artifacts/videos
             tests/artifacts/traces
+
+      - name: Curl registration page in Actions
+        run: curl -v $BASE_URL/auth/register
+
