@@ -27,7 +27,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Cucumber tests
-        run: npx cucumber-js --tags "@addToCart"
+        run: npx cucumber-js --tags "@registration"
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
