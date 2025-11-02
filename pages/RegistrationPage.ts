@@ -41,12 +41,16 @@ export class RegistrationPage {
   }
 
   async navigateToRegistration() {
-    console.log('Navigating to:', process.env.BASE_URL + '/auth/register');
-
+    console.log("Navigating to:", process.env.BASE_URL + "/auth/register");
+    console.log(await this.page.content());
     await this.page.goto(this.registrationUrl);
     console.log(this.page.url());
+    console.log(await this.page.content());
+
     console.log("Waiting for registration page header to be visible");
-    await this.header.waitFor({ state: "visible", timeout: 30000 });
+    await this.page.waitForSelector('h3:has-text("Registration")', {
+      timeout: 30000,
+    });
   }
 
   async fillRegistrationForm() {
