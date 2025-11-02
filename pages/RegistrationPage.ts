@@ -41,7 +41,8 @@ export class RegistrationPage {
   }
 
   async navigateToRegistration() {
-    console.log("Navigating to registration page:", this.registrationUrl);
+    console.log('Navigating to:', process.env.BASE_URL + '/auth/register');
+
     await this.page.goto(this.registrationUrl);
     console.log(this.page.url());
     console.log("Waiting for registration page header to be visible");
