@@ -9,4 +9,11 @@ constructor(page: Page) {
   }
 
 // Add methods for checkout page interactions as needed
+async clickShoppingCart() {
+  //TODO: Implement proceed to checkout functionality
+}
+
+async proceedToCheckout() {
+  //TODO: Implement proceed to checkout functionality
+}
 }
