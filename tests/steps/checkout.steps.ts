@@ -19,14 +19,14 @@ When(
   }
 );
 
-When("user select payment method <{string}>", async function (string) {
-  await this.checkoutPage.selectPaymentMethod(string);
+When("user select payment method {string}", async function (paymentMethod:string) {
+  await this.checkoutPage.selectPaymentMethod(paymentMethod);
 });
 
 When(
-  "user enters valid payment details for <{string}>",
-  async function (string) {
-    //TODO
+  "user enters valid payment details for {string}",
+  async function (paymentMethod: string) {
+    await this.checkoutPage.enterPaymentDetails(paymentMethod);
   }
 );
 

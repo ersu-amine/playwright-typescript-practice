@@ -4,6 +4,7 @@ import { LoginPage } from "../../pages/LoginPage";
 import {RegistrationPage} from "../../pages/RegistrationPage";
 import { BasePage } from "../../pages/BasePage";
 import { ProductPage } from "../../pages/ProductPage";
+import { CheckoutPage } from "../../pages/CheckoutPage";
 
 export class CustomWorld extends World {
   browser!: Browser;
@@ -12,6 +13,7 @@ export class CustomWorld extends World {
   registrationPage!:RegistrationPage;
   basePage!: BasePage;
   productPage!: ProductPage;
+  checkoutPage!: CheckoutPage;
   // Add other page objects as needed
 
   async initPageObjects() {
@@ -19,6 +21,7 @@ export class CustomWorld extends World {
     this.registrationPage = new RegistrationPage(this.page);
     this.basePage = new BasePage(this.page);
     this.productPage = new ProductPage(this.page);
+    this.checkoutPage = new CheckoutPage(this.page);
     // Initialize other page objects similarly
   }
 }

@@ -1,5 +1,7 @@
 @checkout
 Feature: Checkout
+
+  Background:
     Given the user is on the homepage
 
   Scenario Outline: Verify user can checkout successfully
@@ -10,8 +12,8 @@ Feature: Checkout
     And user logs in
     And user click proceed to checkout button
     And user fills in the shipping address details and click proceeds to checkout button
-    And user select payment method <"payment-method">
-    And user enters valid payment details for <"payment-method">
+    And user select payment method "<payment-method>"
+    And user enters valid payment details for "<payment-method>"
     And user clicks confirm button
     Then user should see an order confirmation message
 
@@ -20,8 +22,8 @@ Feature: Checkout
       | Bank Transfer     |
       | Cash on Delivery  |
       | Credit Card       |
-      | Buy Now Pay Later |
       | Gift Card         |
-
+      | Buy Now Pay Later |
+      
 #TODO Scenario with logged in user before adding to cart
 #TODO Scenario with continuing as guest user

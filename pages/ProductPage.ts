@@ -20,6 +20,8 @@ export class ProductPage {
 
     async addToCart() {
         await this.addToCartButton.click();
+        //wait for some time to ensure the cart is updated
+        await this.page.waitForTimeout(1000);
     }
 
     async setItemQuantity(quantity: number) {
