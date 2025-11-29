@@ -34,7 +34,7 @@ export default defineConfig({
     trace: "retain-on-failure",
     //trace: "on-first-retry",
     //headless: process.env.CI ? true : false,
-    headless: true,
+    headless: false,
 
     // viewport: null,
     // launchOptions: {
