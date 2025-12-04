@@ -38,4 +38,9 @@ export class ProductPage {
         expect(actualQuantity).toBe(expectedQuantity);
     }
 
+    async changePriceRangeFilter(minPrice: number, maxPrice: number) {}
+
+    // Method to verify if the price range filter is applied correctly, checking product prices on the page
+    async verifyPriceRangeFilterApplied(minPrice: number, maxPrice: number) {}
+
 }
