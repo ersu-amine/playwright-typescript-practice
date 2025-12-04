@@ -2,6 +2,7 @@ import { Page, Locator, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker/locale/en";
 import dotenv from "dotenv"; //importing dotenv to manage environment variables
 dotenv.config(); //loading environment variables
+import { saveEmailToFile } from "../tests/support/utils";
 
 export class RegistrationPage {
   readonly page: Page;
@@ -66,9 +67,11 @@ export class RegistrationPage {
     console.log("Selected country: Canada");
     const phoneNumber = faker.string.numeric(10);
     await this.phoneInput.fill(phoneNumber);
-    await this.emailInput.fill(faker.internet.email());
+    const email = faker.internet.email();
+    await this.emailInput.fill(email);
     await this.passwordInput.fill(process.env.PASSWORD!);
     console.log("Filled all registration form fields and ready to submit");
+    saveEmailToFile(email);
   }
 
   async clickRegisterButton() {
