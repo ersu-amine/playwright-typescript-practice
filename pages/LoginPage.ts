@@ -9,6 +9,7 @@ export class LoginPage {
   readonly loginButton: Locator;
   readonly dashboardHeader: Locator;
   readonly loginUrl: string;
+  readonly errorMessage:Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,6 +18,7 @@ export class LoginPage {
     this.loginButton = page.locator('[data-test="login-submit"]');
     this.dashboardHeader = page.locator("h1");
     this.loginUrl = `${process.env.BASE_URL}/auth/login`;
+    this.errorMessage = page.locator("[data-test='login-error']");
   }
   async navigateToLogin() {
     await this.page.goto(this.loginUrl);
@@ -46,5 +48,10 @@ export class LoginPage {
 
     // Assert the heading text matches expectation
     expect(await this.dashboardHeader.textContent()).toBe("My account");
+  }
+
+  async verifyErrorMessage(message:string){
+    expect(await this.errorMessage.textContent()).toBe(message);
+
   }
 }
